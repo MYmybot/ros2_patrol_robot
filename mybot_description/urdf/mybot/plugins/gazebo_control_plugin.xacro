@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name ="gazebo_control_plugin">
+        <gazebo>
+            <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+                <ros>
+                    <namespace>/</namespace>
+                    <remapping>cmd_vel:=cmd_vel</remapping><!--重映射话题名，此处重映射为自己，相当于没有映射，后如需要，方便修改-->
+                    <remapping>odom:=odom</remapping><!--重映射里程计的话题名，此处重映射为自己，相当于没有映射，后如需要，方便修改-->
+                </ros>
+                <update_rate>30</update_rate><!--发布信息的更新频率/Hz-->
+                <!--wheels-->
+                <left_joint>left_wheel_joint</left_joint>
+                <right_joint>right_wheel_joint</right_joint>
+                <!--kinematics运动学相关-->
+                <wheel_separation>0.2</wheel_separation><!--两轮距离-->
+                <wheel_diameter>0.064</wheel_diameter><!--轮直径-->
+                <!--limits-->
+                <max_wheel_torque>20</max_wheel_torque><!--轮最大扭矩-->
+                <max_wheel_acceleration>1.0</max_wheel_acceleration><!--轮最大加速度-->
+                <!--output-->
+                <publish_odom>true</publish_odom><!--是否发布里程计动态数据true-->
+                <publish_odom_tf>true</publish_odom_tf><!--是否发布里程计动态数据的tf（transformer坐标变换矩阵）true-->
+                <publish_wheel_tf>true</publish_wheel_tf><!--是否发布轮子动态数据的tf（transformer坐标变换矩阵）true-->
+                <odometry_frame>odom</odometry_frame>
+                <robot_base_frame>base_footprint</robot_base_frame>
+            </plugin>
+        </gazebo>
+    </xacro:macro>
+</robot>
