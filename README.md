@@ -66,3 +66,4 @@ ros2 autopatrol_robot autopatrol.launch.py
 
 ## 3. 作者
 - [MYmybot](https://github.com/MYmybot)
+- [邮箱：ZytbZMY@163.com]
